@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { setHello } from '../store/actions';
 
 const About = ({ hello, setHello }) => {
-    console.log("hello: ",hello, "setHello: ", setHello)
     return(
         <div>
             <h1>About</h1> 
