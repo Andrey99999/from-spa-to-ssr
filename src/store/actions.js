@@ -1,6 +1,6 @@
 import { SET_HELLO } from "./types";
 
-export const setHello = payload => {
+export const setHello = (payload) => ({
     type: SET_HELLO,
     payload
-}
+})
