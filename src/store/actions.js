@@ -1,6 +1,22 @@
-import { SET_HELLO } from "./types";
+import { PLUS_NUMBER, MINUS_NUMBER, FETCH_TODOS } from "./types";
+import axios from 'axios'
 
-export const setHello = (payload) => ({
-    type: SET_HELLO,
+export const plusNumber = (payload) => ({
+    type: PLUS_NUMBER,
     payload
-})
+});
+
+export const minusNumber = (payload) => ({
+    type: MINUS_NUMBER,
+    payload
+});
+
+export const fetchTodos = () => async dispatch => {
+    const resGet = 'https://jsonplaceholder.typicode.com/todos'
+    const response = await axios.get(resGet);
+    console.log(response);
+    dispatch({
+        type: FETCH_TODOS,
+        payload: response.data
+    })
+}

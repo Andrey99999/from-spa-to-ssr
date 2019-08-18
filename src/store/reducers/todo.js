@@ -1,11 +1,10 @@
-import { SET_HELLO } from "../types";
+import { FETCH_TODOS } from "../types";
 
-const initialState = 0;
+const initialState = [];
 
 export default (state = initialState, action) => {
     switch(action.type) {
-        case SET_HELLO:
-        let nextState = initialState;
+        case FETCH_TODOS:
            return action.payload;
            
         default: 

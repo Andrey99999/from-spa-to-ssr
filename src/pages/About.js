@@ -2,26 +2,28 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { setHello } from '../store/actions';
+import { plusNumber } from '../store/actions';
+import { minusNumber } from '../store/actions';
 
-const About = ({ hello, setHello }) => {
+const About = ({ numbers, plusNumber, minusNumber }) => {
     return(
         <div>
             <h1>About</h1> 
             <Link to='/' >Home</Link>
             <br />
-            { hello }
+            { numbers }
             <br />
-            <button type="button" onClick={() => setHello(++hello)}>click number</button>    
+            <button type="button" onClick={() => plusNumber()}>click number + 1</button>    
+            <button type="button" onClick={() => minusNumber()}>click number - 1</button>    
         </div>
     ) 
 }
 
 const mapStateToProps = state => ({   // обращения к state, чтобы его можно было видеть в props
-    hello: state.hello
+    numbers: state.numbers
 })
 
-const mapDispatchToProps = { setHello }  // импортируем  action
+const mapDispatchToProps = { plusNumber, minusNumber }  // импортируем  action
 
 export default connect(
     mapStateToProps, 

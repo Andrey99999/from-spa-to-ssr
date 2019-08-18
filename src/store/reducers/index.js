@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux'
 
-import hello from './hello'
+import numbers from './numbers'
+import todo from './todo'
 
 export default combineReducers ({
-    hello
+    numbers,
+    todo
 })
