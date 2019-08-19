@@ -7,5 +7,8 @@ const NotFound = () => {
         </div>
     ) 
 }
+//  for spa
+// export default NotFound;
 
-export default NotFound;
+// for  server  side  rendering
+export default { component: NotFound } 

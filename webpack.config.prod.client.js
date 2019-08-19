@@ -1,10 +1,11 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin') // сжимает js
 const CompressionPlugin = require('compression-webpack-plugin') // сжимает в архив gzip
 const { CleanWebpackPlugin } = require('clean-webpack-plugin') // очищает папку dist перед каждым новым build 
 const webpack = require('webpack')
 const merge = require('webpack-merge')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { StatsWriterPlugin } = require('webpack-stats-plugin') // создает json файл, статистику builda, нужен для ssr, чтобы в script подключался правильный chunk
 
 const baseConfig = require('./webpack.config.base')
 
@@ -15,6 +16,15 @@ module.exports = merge(baseConfig, {
         filename: 'bundle.[chunkhash].js', // chunkhash чтобы не кешировались фвйлы при изменении 
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/'
+    },
+
+    module: {
+        rules: [
+            {
+                test: /\.scss$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+            }
+        ]
     },
 
     optimization: {
@@ -35,14 +45,21 @@ module.exports = merge(baseConfig, {
     // плагины
     plugins: [
         new CompressionPlugin(), 
-        new HtmlWebpackPlugin({
-            template: './index.html'
-        }),
         new CleanWebpackPlugin(), // очистка директории
         new webpack.DefinePlugin({
             'process.env': {
                 'NODE_ENV': JSON.stringify('production')
             }
+        }),
+        new StatsWriterPlugin({
+            // filename: 'stats.json'
+            stats: {
+                all: false,
+                assets: true
+            }
+        }),
+        new MiniCssExtractPlugin({
+            filename: 'styles.[chunkhash].css'
         })
     ],
 

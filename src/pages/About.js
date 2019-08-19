@@ -25,6 +25,14 @@ const mapStateToProps = state => ({   // обращения к state, чтобы
 
 const mapDispatchToProps = { plusNumber, minusNumber }  // импортируем  action
 
-export default connect(
+// for  spa
+// export default connect(
+//     mapStateToProps, 
+//     mapDispatchToProps)(About);
+
+// for server side rendering
+export default {
+    component:  connect(
     mapStateToProps, 
-    mapDispatchToProps)(About);
+    mapDispatchToProps)(About)
+}

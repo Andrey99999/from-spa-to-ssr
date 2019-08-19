@@ -14,7 +14,6 @@ export const minusNumber = (payload) => ({
 export const fetchTodos = () => async dispatch => {
     const resGet = 'https://jsonplaceholder.typicode.com/todos'
     const response = await axios.get(resGet);
-    console.log(response);
     dispatch({
         type: FETCH_TODOS,
         payload: response.data

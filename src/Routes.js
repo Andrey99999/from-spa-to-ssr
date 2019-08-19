@@ -4,29 +4,56 @@ import NotFound from './pages/NotFound'
 import Todo from './pages/Todo'
 import App from './App'
 
+
+//  for  spa
+// export default [
+//     {
+//         component: App,
+//         routes: [
+//             {
+//                 component: Home,
+//                 path: '/',
+//                 exact: true
+//             },
+//             {
+//                 component: About,
+//                 path: '/about',
+//             },
+//             {
+//                 component: Todo,
+//                 path: '/todo',
+//             },
+//             {
+//                 component: NotFound,
+//                 // path: '/notfound',
+//             }
+//         ]
+//     }
+// ];
+
+
+//  for server  side  rendering
 export default [
     {
-        component: App,
+        ...App,
         routes: [
             {
-                component: Home,
+                ...Home,
                 path: '/',
                 exact: true
             },
             {
-                component: About,
+                ...About,
                 path: '/about',
             },
             {
-                component: Todo,
+                ...Todo,
                 path: '/todo',
             },
             {
-                component: NotFound,
+                ...NotFound,
                 // path: '/notfound',
             }
         ]
     }
 ];
-
-// export default Routes;

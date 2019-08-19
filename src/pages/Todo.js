@@ -22,12 +22,27 @@ const Todo = ({ todo, fetchTodos }) => {
     ) 
 }
 
+//  for server  side  rendering
+const loadData = (store, param) => { 
+    return store.dispatch(fetchTodos(param))
+}
+
 const mapStateToProps = state => ({   // обращения к state, чтобы его можно было видеть в props
     todo: state.todo
 })
 
 const mapDispatchToProps = { fetchTodos }  // импортируем  action
 
-export default connect(
+// for spa
+// export default connect(
+//     mapStateToProps, 
+//     mapDispatchToProps)(Todo);
+
+
+// for server side rendering
+export default {
+    component:  connect(
     mapStateToProps, 
-    mapDispatchToProps)(Todo);
+    mapDispatchToProps)(Todo),
+    loadData
+}

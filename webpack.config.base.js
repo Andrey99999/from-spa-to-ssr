@@ -3,10 +3,11 @@ module.exports = {
      // для обработки sass, js файлов
      module: {
         rules: [
-            {
-                test: /\.scss$/,  // расширения каких файлов обрабатывать
-                use: ['style-loader', 'css-loader', 'sass-loader'] // лоадеры
-            },
+            //  for  spa
+            // {
+            //     test: /\.scss$/,  // расширения каких файлов обрабатывать
+            //     use: ['style-loader', 'css-loader', 'sass-loader'] // лоадеры
+            // },
 
             {
                 test: /\.js?$/, // расширения каких файлов обрабатывать

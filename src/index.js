@@ -5,7 +5,7 @@ import { renderRoutes } from 'react-router-config'
 
 import Routes from './Routes'
 import { Provider } from 'react-redux'
-import  store  from  './store'
+import  { store }  from  './store'
 import '@babel/polyfill'
 
 

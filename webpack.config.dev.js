@@ -8,10 +8,17 @@ const baseConfig = require('./webpack.config.base')
 module.exports = merge(baseConfig, { // первый аргумент базовый конфиг, вторым какие будут изменения
     mode: 'development',
     entry: './src/index.js', // точка входа
-    output: {    // куда выкидывать готовые файлы
+    output: { // куда выкидывать готовые файлы
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'public'),
         publicPath: '/'
+    },
+
+    module: {
+        rules: [{
+            test: /\.scss$/, // расширения каких файлов обрабатывать
+            use: ['style-loader', 'css-loader', 'sass-loader'] // лоадеры
+        }, ]
     },
 
     // плагины

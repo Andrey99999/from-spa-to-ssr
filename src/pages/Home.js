@@ -11,5 +11,8 @@ const Home = () => {
         </div>
     ) 
 }
+//  for spa
+// export default Home;
 
-export default Home;
+// for  server  side  rendering
+export default { component: Home } 
